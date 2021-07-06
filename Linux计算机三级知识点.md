@@ -29,4 +29,10 @@
    2. passwd 可以直接修改自己的密码 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210706141458416.png)
 
 
-### 1.2 软件包
+### 1.2 RPM包安装、卸载和升级
+1. 安装 `rpm -ivh xxx`
+2. 升级 `rpm -Uvh xxx`
+3. 卸载 `rpm -e xxx`
+4. 查询 `rpm -q xxx`和`rpm -qa` 查询所有
+
+## 2.1 shell脚本编程基础
