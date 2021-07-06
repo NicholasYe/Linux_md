@@ -10,18 +10,23 @@
    1. w -h 不显示输出信息标题
    2. w -l 用详细格式输出
    3. w -s 用简洁格式输出
-![](2021-07-06-13-48-56.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20210706141336334.png)
+
 2. who命令：只能显示当前登录的用户信息  `who [选项] [file]`
-   1. who -a 全部显示 ![](2021-07-06-13-52-41.png)
+   1. who -a 全部显示 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210706141401932.png)
+
 3. echo命令 `echo [选项] [输出内容]`
-   1. echo "Hello World" ![](2021-07-06-13-55-39.png)
-   2. echo "Hello World" ![](2021-07-06-13-56-55.png)
+   1. echo "Hello World" ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210706141420378.png)
+
+   2. echo "Hello World" ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210706141439689.png)
+
    3. **不知道为啥，在我眼中，科技最大的浪漫就是电脑回复你Hello World的那一刻**
 4. date命令 `date [选项]`
    1. date 
    2. data -s 设置时间
 5. passwd命令 `passwd [选项] 用户名`
    1. root用户可通过 passwd xxx 修改普通用户的密码
-   2. passwd 可以直接修改自己的密码 ![](2021-07-06-14-03-42.png)
+   2. passwd 可以直接修改自己的密码 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210706141458416.png)
+
 
 ### 1.2 软件包
