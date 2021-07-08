@@ -145,7 +145,7 @@ shell脚本主要有三种方式：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210707213827219.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 1. 第一个小括号的命令执行完后，主shell并未进入study的文件夹中，但是子shell进入study文件夹中并创建了文件test01；
 2. 第二个大括号的命令执行完后，主shell进入study的文件夹中，并创建了test02文件；完成命令后主shell就在study文件夹中了。
-- 注意：**大括号的第一条命令多打一个空格，最后一条记得打分号！**
+- 注意：**大括号的第一条命令前多打一个空格，最后一条记得打分号！**
 >懂了没懂了没懂了没/doge
 
 #### 2.2.6 管道符、后台命令符和注释符
@@ -156,7 +156,30 @@ shell脚本主要有三种方式：
 3. 注释符 #
 注释注释注释，懂的都懂，不懂的话，emmm……
 
+### 2.3 shell编程
+>这章作者先暂时跳过，shell编程是独立且庞大的一章，作者会专门写一篇文章学习shell编程。
 
+
+## 3 用户管理
+
+### 3.1 用户与用户组管理
+Linux系统支持多个用户在同一时间内登陆，不同用户可以执行不同的任务，并且互不影响
+#### 3.1.1 用户与用户组
+每一个用户都有一个唯一的用户名和密码。用户组是建立一个组，赋予这个组不同的权限，再将用户放置在组中，以达到赋予不同用户不同权限的功能。
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20210708081943525.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
+#### 3.1.2 用户与用户组管理
+- 输入 `cat /etc/passwd` 后可以查看所有用户名与ID对应关系
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20210708082802853.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
+- 注意：其中第1字段是用户名，**第3字段是用户UID，第4字段是用户GID**（加粗部分下同）
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20210708083831248.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
+
+- 输入 `cat /etc/group` 后可以查看ID与用户组对应关系
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20210708083600803.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
+
+### 3.2 用户和用户组管理的相关文件
+#### 3.2.1 passwd文件
+首先通过 `cat /etc/passwd` 打开文件
+1. 其中1~499的ID是保留给系统使用的，这些用户被称为是系统用户或者伪用户，**无法用于登录系统**。500以后的ID是是给一般用户使用的。
 
 
 
