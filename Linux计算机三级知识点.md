@@ -165,7 +165,7 @@ shell脚本主要有三种方式：
 ### 3.1 用户与用户组管理
 Linux系统支持多个用户在同一时间内登陆，不同用户可以执行不同的任务，并且互不影响
 #### 3.1.1 用户与用户组
-每一个用户都有一个唯一的用户名和密码。用户组是建立一个组，赋予这个组不同的权限，再将用户放置在组中，以达到赋予不同用户不同权限的功能。
+每一个用户都有一个**唯一**的用户名和密码。用户组是建立一个组，赋予这个组不同的权限，再将用户放置在组中，以达到赋予不同用户不同权限的功能。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210708081943525.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 #### 3.1.2 用户与用户组管理
 - 输入 `cat /etc/passwd` 后可以查看所有用户名与ID对应关系
