@@ -1,3 +1,3 @@
 # Linux_md
 
-Well, this is the file where I write my note about Linux
+Well, this is the file where I write down my note about Linux
