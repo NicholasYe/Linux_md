@@ -4,7 +4,10 @@
 会在暑假陆陆续续更新完毕，欢迎关注！
 欢迎交流讨论，喜欢的话点个赞吧
 ```
-
+## 0 linux一些基础知识与命令
+1. `su root` 进入超级用户模式
+2. `yum search vim` 搜索软件, `yum install vim` 安装软件
+3. 日期的格式为YYYY-MM-DD
 
 ## 1 linux系统使用基础
 
@@ -20,7 +23,6 @@
    1. w -h 不显示输出信息标题
    2. w -l 用详细格式输出
    3. w -s 用简洁格式输出
-2. su root 进入超级用户模式
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210706141336334.png)
 
@@ -32,10 +34,10 @@
    1. echo "Hello World" 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210706141420378.png)
 
-   3. echo "Hello World" 
+   2. echo "Hello World" 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210706141439689.png)
 
-   5. **不知道为啥，在我眼中，科技最大的浪漫就是电脑回复你Hello World的那一刻**
+   3. **不知道为啥，在我眼中，科技最大的浪漫就是电脑回复你Hello World的那一刻**
 
 1. date命令 `date [选项]`
    1. date 
@@ -75,13 +77,13 @@ shell脚本主要有三种方式：
 #### 2.2.1 通配符
 文件名的扩展称为通配（Globbing），通配定义了一整套使用特殊字符的规则。
 
-符号|含义
----|---
-*|匹配任意字符的0次或多次出现
-？|匹配任意单个字符
-[ ]|匹配该字符组所限定的任何一个字符
-[^ ] 或 [! ]|匹配不在该字符组的任何一个字符组
-{string1, string2,……}|匹配其中一个制定的字符串
+符号 | 含义
+--- | ---
+* | 匹配任意字符的0次或多次出现
+？ | 匹配任意单个字符
+[ ] | 匹配该字符组所限定的任何一个字符
+[^ ] 或 [! ] | 匹配不在该字符组的任何一个字符组
+{string1, string2,……} | 匹配其中一个制定的字符串
 
 **举几个例子吧：**
 1. `ls -l ab*` 显示所有ab开头的文件信息
@@ -104,12 +106,16 @@ shell脚本主要有三种方式：
 如`echo 'It is warm(and sunny);come over & visit` 计算机就不会误认为"（" 、 ";" 、 "&" 等符号。
 2. 双引号
 可是在程序中我们有时候需要保留部分有特殊含义的符号，如：
-- $ : 代表引用变量的值
-- \ : 转义字符
-- ` : 引用命令
+
+符号 | 意义
+--- | ---
+$ | 代表引用变量的值
+\ | 转义字符
+` | 引用命令
+
 **在双引号中，这些符号会被正常识别为特殊符号**，看这个例子就懂啦
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210707191841992.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
-3. 倒引号
+1. 倒引号
 倒引号被括起来的字符串**被shell解释为命令行**，shell会直接执行这段命令并取代倒影号部分
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210707192411804.png)
 
@@ -124,7 +130,8 @@ shell脚本主要有三种方式：
 输出重定向符“>”可以把命令的标准输出重新定向到制定文件中
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2021070720043673.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 - 注意：若无此文件，将**生成一个新文件**；若已有该文件，此文件将被**重新覆盖！**
-4. 输出重定向符 >>
+
+1. 输出重定向符 >>
 命令的标准输出到指定文件的后面，原有文件不会被破坏
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210707200900562.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 
@@ -146,6 +153,7 @@ shell脚本主要有三种方式：
 1. 第一个小括号的命令执行完后，主shell并未进入study的文件夹中，但是子shell进入study文件夹中并创建了文件test01；
 2. 第二个大括号的命令执行完后，主shell进入study的文件夹中，并创建了test02文件；完成命令后主shell就在study文件夹中了。
 - 注意：**大括号的第一条命令前多打一个空格，最后一条记得打分号！**
+
 >懂了没懂了没懂了没/doge
 
 #### 2.2.6 管道符、后台命令符和注释符
@@ -179,7 +187,137 @@ Linux系统支持多个用户在同一时间内登陆，不同用户可以执行
 ### 3.2 用户和用户组管理的相关文件
 #### 3.2.1 passwd文件
 首先通过 `cat /etc/passwd` 打开文件
-1. 其中1~499的ID是保留给系统使用的，这些用户被称为是系统用户或者伪用户，**无法用于登录系统**。500以后的ID是是给一般用户使用的。
+- 其中1~499的ID是保留给系统使用的，这些用户被称为是系统用户或者伪用户，**无法用于登录系统**。500以后的ID是是给一般用户使用的。
+- 每个字段含义如下：
+
+>用户名：密码：UID：GID：描述性信息：主目录：默认shell
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20210710123601940.png)
+
+#### 3.2.2 shadow文件
+shadow文件储存的是用户的密码信息，如果需要打开该文件，**需要通过 `su root` 进入管理员模式**，才能正常查看该文件。
+通过 `cat /etc/shadow` 打开文件
+
+#### 3.2.3 group文件
+group文件储存的是用户组配置文件，可以通过 `cat /etc/group` 命令来打开
+- 每个字段的含义如下：
+>组名：密码：GID：该用户组的用户列表
+
+#### 3.2.4 gshadow文件
+同shadow文件，gshadow文件存储的是组用户信息。~~group+shadow嘛，简单！~~
+
+### 3.3 用户和用户组管理的命令
+**讲完如何查看用户的信息，那么下面自然而然讲的就是如何管理用户和用户组啦。**
+
+#### 3.3.1 用户的添加
+命令：`useradd [选项] 用户名`
+
+选项 | 含义
+--- | ---
+-u | 手动指定UID
+-d | 主目录**必须要写绝对目录**
+-c | 手动指定/etc/passwd文件中各用户信息中字段5的描述性内容
+-g |　手动制定用户的初始组
+-G | 指定用户的附加组
+-s shell | 手动指定用户的登录shell。**一般默认为/bin/bash**
+-r | 创建系统用户
+
+注意：**在创建用户的时候，系统已经帮用户设置了许多默认值**，如：
+1. 在/etc/passwd中创建一行数据
+2. 在/etc/shadow中创建一行数据，此时密码字段为“!!”，因为用户还未设置合理的密码
+3. 在/etc/group中创建一行与用户名一模一样的群组
+4. 在/etc/gshadow中创建一行与新增组相关的密码信息
+5. 默认创建用户的主目录和邮箱
+6. 将/etc/skel目录中的配置文件复制到新用户的主目录中
+
+无敌版：
+`useradd -u 550 -g student -G root -d /home/student -c "test user" -s /bin/bash student`
+>所以这段代码是什么意思呢？请读者自行理解/doge
+
+- 那我们新建用户的时候，能不能改一改默认的参考值呢？
+  
+用vim打开文件并修改： `vim /etc/default/useradd`
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20210710160219688.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
+
+参数 | 含义
+--- | ---
+GROUP=100 | 用于建立用户的默认组
+Home=/home | 用户主目录的默认位置
+INACTIVE=-1 | 密码过期后的宽限天数(-1指不会过期)
+EXPIRE= | 密码失效时间
+SHELL=/bin/bash | 新建立用户的默认bash
+SKEL=/etc/skel | 新建用户默认主目录的配置信息文件
+CREATE_MAIL_SPOOL=yes | 指的是给新建用户建立邮箱
+
+**这些值都可以通过vim编辑器进行修改**
+
+- 除此以外，还有部分的默认信息可以在文件 `/etc/login.def` 中查看到
+
+#### 3.3.2 密码配置命令
+使用useradd命令创建新用户时，并没有给用户设置密码，所以无法正常登录，
+通过命令 `passwd [选项] 用户名` 可以给账户设置密码
+
+选项 | 含义
+--- | ---
+-S | 查询用户密码的状态
+-l | 暂时锁定用户(仅root用户)
+-u | 解锁用户(与-l相对应)
+-x | 设置该用户密码的有效期
+-i | 设置用户密码失效日期
+--stdin | 可以将通过管道输出的数据作为用户的密码
+
+#### 3.3.3 修改用户信息命令
+使用 `usermod [选项] 用户名` 命令可以修改**已存在**的用户，也可以用vim编辑器修改(/etc/passwd /etc/shadow /etc/group /etc/gshadow)文件。
+注意：需要分清useradd与usermod两个命令，前者用于添加新用户，后者针对已存在的用户。
+选项 | 含义
+--- | ---
+-c | 修改用户的说明信息
+-d | 修改用户的主目录
+-e | 修改用户的失效时期
+-g | 修改用户的初始组
+-u | 修改用户的ID
+-G | 修改用户的附加组
+-l | 修改用户名称
+-s shell | 修改用户的登录shell，默认的是/bin/bash
+
+- 是不是感觉useradd与usermod的命令非常像呢？
+
+#### 3.3.5 修改用户密码状态命令
+使用 `chage [选项] 命令` 可以修改用户密码信息
+
+选项 | 含义
+--- | ---
+-l | 列出用户的详细密码状态
+-m | 修改密码最短保留天数
+-M | 修改密码有效期
+-E | 修改账号失效日期
+
+> 既然可以用vim直接编辑，为何还要用chage命令呢？
+> **因为chage命令可以让新建的用户在首次登录系统时立即修改密码**
+
+代码如下：
+```
+# useradd student //创建用户student
+# echo "student" | passwd --stdin student //设置用户的初始密码
+# chage -d 0 student //将用户的创建日期改为1970年1月1日,这样用户登录后就必须修改密码
+```
+
+#### 3.3.5 删除用户命令
+使用 `userdel -r 用户名` 可以修改用户密码信息
+
+#### 3.3.6 查看用户的UID和GID命令
+使用 `id 用户名` 可以查看用的UID、GID和附加组的信息
+
+#### 3.3.7 用户间切换命令
+使用 `su [选项] 用户名` 来切换用户
+
+选项 | 含义
+--- | ---
+-l | 完整切换工作环境
+-p | 切换为指定用户的身份，但不改变工作环境
+-c | 切换并只执行一次命令，执行完自动切回
+
+
+
 
 
 
