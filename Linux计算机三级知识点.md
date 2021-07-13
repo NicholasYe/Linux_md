@@ -129,6 +129,7 @@ $ | 代表引用变量的值
 3. 输出重定向符 >
 输出重定向符“>”可以把命令的标准输出重新定向到制定文件中
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2021070720043673.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
+
 - 注意：若无此文件，将**生成一个新文件**；若已有该文件，此文件将被**重新覆盖！**
 
 1. 输出重定向符 >>
@@ -142,6 +143,7 @@ $ | 代表引用变量的值
 如果使用“&&”连接多条命令，那么这些命令之间就有逻辑关系了。只有第一条命令正确执行了，第二条命令才会执行。`cp /root/test && rm /root/test`
 3. 逻辑或 ||
 只有第一条命令执行错误了，第二条命令才会执行。
+
 - 注意：&&与||具有相同的优先级，以从左往右的顺序执行
 
 #### 2.2.5 小括号与大括号
@@ -152,16 +154,17 @@ $ | 代表引用变量的值
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210707213827219.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 1. 第一个小括号的命令执行完后，主shell并未进入study的文件夹中，但是子shell进入study文件夹中并创建了文件test01；
 2. 第二个大括号的命令执行完后，主shell进入study的文件夹中，并创建了test02文件；完成命令后主shell就在study文件夹中了。
+
 - 注意：**大括号的第一条命令前多打一个空格，最后一条记得打分号！**
 
 >懂了没懂了没懂了没/doge
 
 #### 2.2.6 管道符、后台命令符和注释符
-1. 管道符 |
+1. 管道符 `|`
 用于连接多条命令，**前一个命令的输出是下一个命令的输入**，命令2只能处理命令1的正确输出，如果输出内容过多，可以用 | more命令分屏显示
-2. 后台命令符 &
+2. 后台命令符 `&`
 可以使部分命令在后台进行，**与用户无交互，即不相应用户的输入和中断控制信号**
-3. 注释符 #
+3. 注释符 `#`
 注释注释注释，懂的都懂，不懂的话，emmm……
 
 ### 2.3 shell编程
@@ -172,16 +175,21 @@ $ | 代表引用变量的值
 
 ### 3.1 用户与用户组管理
 Linux系统支持多个用户在同一时间内登陆，不同用户可以执行不同的任务，并且互不影响
+
 #### 3.1.1 用户与用户组
 每一个用户都有一个**唯一**的用户名和密码。用户组是建立一个组，赋予这个组不同的权限，再将用户放置在组中，以达到赋予不同用户不同权限的功能。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210708081943525.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
+
 #### 3.1.2 用户与用户组管理
 - 输入 `cat /etc/passwd` 后可以查看所有用户名与ID对应关系
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210708082802853.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 - 注意：其中第1字段是用户名，**第3字段是用户UID，第4字段是用户GID**（加粗部分下同）
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210708083831248.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 
 - 输入 `cat /etc/group` 后可以查看ID与用户组对应关系
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210708083600803.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 
 ### 3.2 用户和用户组管理的相关文件
@@ -302,10 +310,12 @@ CREATE_MAIL_SPOOL=yes | 指的是给新建用户建立邮箱
 ```
 
 #### 3.3.5 删除用户命令
-使用 `userdel -r 用户名` 可以修改用户密码信息
+使用 `userdel -r 用户名` 可以删除用户的同时和用户的家目录
 
 #### 3.3.6 查看用户的UID和GID命令
 使用 `id 用户名` 可以查看用的UID、GID和附加组的信息
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20210713204029219.png)
+
 
 #### 3.3.7 用户间切换命令
 使用 `su [选项] 用户名` 来切换用户
@@ -316,11 +326,26 @@ CREATE_MAIL_SPOOL=yes | 指的是给新建用户建立邮箱
 -p | 切换为指定用户的身份，但不改变工作环境
 -c | 切换并只执行一次命令，执行完自动切回
 
+- 注意：使用 `su` 命令的时候，有 `-` 和没有 `-` 是完全不同的，`-` 选项表示在切换用户身份的同时，连当前使用的环境变量也切换成指定用户的。
 
+![在这里插入图片描述](https://img-blog.csdnimg.cn/2021071320485742.png)
 
+#### 3.3.8 用户组管理命令
+- 使用 `groupadd [选项] 组名` 来添加用户组
+- 使用 `groupmod [选项] 组名` 来修改用户组的相关信息
+- 使用 `groupdel 组名` 来删除用户组
+  
+使用 `gpasswd [选项] 组名` 来给组设置一个组管理员
 
-
-
+选项 | 含义
+--- | ---
+-A user1 | 将群组的控制权交给user1(仅root)
+-M user1 | 将user1等用户加入此组(仅root)
+-r | 移除组的密码
+-R | 让组的密码失效
+-a user | 将user用户加入组
+-d user | 将user用户从组中移除
+  
 
 
 
