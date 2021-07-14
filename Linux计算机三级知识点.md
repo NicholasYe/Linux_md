@@ -103,7 +103,8 @@ shell脚本主要有三种方式：
 #### 2.2.2 引号
 1. 单引号
 在输出字符的时候，计算机无法辨别字符是程序语言还是普通语言，所以用引号可以帮助计算机辨别语言种类
-如`echo 'It is warm(and sunny);come over & visit` 计算机就不会误认为"（" 、 ";" 、 "&" 等符号。
+如`echo 'It is warm(and sunny);come over & visit'` 计算机就不会误认为"（" 、 ";" 、 "&" 等符号。
+
 2. 双引号
 可是在程序中我们有时候需要保留部分有特殊含义的符号，如：
 
@@ -115,7 +116,8 @@ $ | 代表引用变量的值
 
 **在双引号中，这些符号会被正常识别为特殊符号**，看这个例子就懂啦
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210707191841992.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
-1. 倒引号
+
+3. 倒引号
 倒引号被括起来的字符串**被shell解释为命令行**，shell会直接执行这段命令并取代倒影号部分
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210707192411804.png)
 
@@ -144,7 +146,7 @@ $ | 代表引用变量的值
 3. 逻辑或 ||
 只有第一条命令执行错误了，第二条命令才会执行。
 
-- 注意：&&与||具有相同的优先级，以从左往右的顺序执行
+- 注意：**&&与||具有相同的优先级，以从左往右的顺序执行**
 
 #### 2.2.5 小括号与大括号
 - 相同之处：大括号{ }和小括号( )都可以将若干命令括起来，在逻辑上成为同一条命令
@@ -362,6 +364,74 @@ CREATE_MAIL_SPOOL=yes | 指的是给新建用户建立邮箱
 - 相对路径：`etc/login.defs`
 
 >注意：Linux系统**不以文件的扩展名来区分文件类型**
+>例如：dog.exe只是一个文件，其扩展名.exe并不代表此文件就一定是可执行文件
+
+### 4.2 文件与目录操作
+
+#### 4.2.1 文件操作命令
+
+1. cat命令
+- cat命令的基本格式是 `car [选项] 文件名`，这个命令用于显示文件的内容。或者 `car 文件1 文件2 > 文件3`用于连接、合并文件。
+
+选项 | 含义
+--- | ---
+-n | 对输出的**所有行**进行编号
+-b | 此选项表示只对**非空行**进行编号
+-s | 当遇到多行空白行时，替换为一行的空白行
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20210714140018911.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20210714140406163.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
+
+
+2. more命令
+- more命令的基本格式是 `more [选项] 文件名`，可以逐页阅读文件中的内容
+
+选项 | 含义
+--- | ---
+-c或-p | 不滚屏，先清屏后再显示内容
+-s | 当遇到多行空白行时，替换为一行的空白行
++n | 从第n行开始显示文件内容(n代表数字)
+-n | 一次显示的行数(n代表数字)
+
+3. head命令与tail命令
+- head命令的基本格式是 `head [选项] 文件名`，可以显示指定的文件前若干行的内容
+- tail命令的基本格式是 `tail [选项] 文件名`，可以显示指定的文件末尾若干行的内容
+
+选项 | 含义
+--- | ---
+-n k | 显示文件前k行的内容
+-c k | 显示文件前k个字节的内容
+-v | 显示文件名(head)
+-f | 输出文件变化后增加的数据(tail)
+
+4. touch命令
+touch命令的重要功能是**修改文件的时间参数**
+
+- 时间参数：
+1. 访问时间(access time)：只要文件的内容被读取，访问时间就会被刷新
+2. 数据修改时间(modify time)：只要文件的数据内容被修改，数据修改时间就会被刷新
+3. 状态修改时间(change time)：只要文件的状态发生变化(权限和属性)，状态修改时间就会被刷新
+
+- touch命令的基本格式是 `touch [选项] 文件名`
+
+选项 | 含义
+--- | ---
+-a | 只修改文件的访问时间
+-c | 修改文件的三个时间参数
+-m | 只修改文件的数据修改时间
+-t | 该选项可以跟欲修订的时间(格式为`YYYYMMDDhhmm`)
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20210714145335701.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
+
+5. grep命令
+
+
+
+
+
+
+
 
 
 
