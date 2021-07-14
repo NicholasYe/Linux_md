@@ -425,7 +425,7 @@ touch命令的重要功能是**修改文件的时间参数**
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210714145335701.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 
 5. grep命令
-- grep命令的基本格式是 `grep [选项] 模式 文件名`，可以从文件中找到包含指定信息的那些行,
+- grep命令的基本格式是 `grep [选项] 模式 文件名`，可以从文件中找到包含指定信息的那些行，**这里的模式，要么是字符(串)，要么是正则表达式。**
 
 选项 | 含义
 --- | ---
