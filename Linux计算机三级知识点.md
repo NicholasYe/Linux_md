@@ -27,7 +27,7 @@
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210706141336334.png)
 
-1. who命令：只能显示当前登录的用户信息  `who [选项] [file]`
+2. who命令：只能显示当前登录的用户信息  `who [选项] [file]`
    1. who -a 全部显示 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210706141401932.png)
 
@@ -135,15 +135,17 @@ $ | 代表引用变量的值
 
 - 注意：若无此文件，将**生成一个新文件**；若已有该文件，此文件将被**重新覆盖！**
 
-1. 输出重定向符 >>
+4. 输出重定向符 >>
 命令的标准输出到指定文件的后面，原有文件不会被破坏
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210707200900562.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 
 #### 2.2.4 命令执行操作符
 1. 顺序执行 ;
 如`ls ; date; cd/user; pwd` 会依次执行，命令之间没有任何逻辑关系，哪条命令错了也不会影响到下一条命令
+
 2. 逻辑与 &&
 如果使用“&&”连接多条命令，那么这些命令之间就有逻辑关系了。只有第一条命令正确执行了，第二条命令才会执行。`cp /root/test && rm /root/test`
+
 3. 逻辑或 ||
 只有第一条命令执行错误了，第二条命令才会执行。
 
@@ -410,9 +412,9 @@ CREATE_MAIL_SPOOL=yes | 指的是给新建用户建立邮箱
 touch命令的重要功能是**修改文件的时间参数**
 
 - 时间参数：
-1. 访问时间(access time)：只要文件的内容被读取，访问时间就会被刷新
-2. 数据修改时间(modify time)：只要文件的数据内容被修改，数据修改时间就会被刷新
-3. 状态修改时间(change time)：只要文件的状态发生变化(权限和属性)，状态修改时间就会被刷新
+  1. 访问时间(access time)：只要文件的内容被读取，访问时间就会被刷新
+  2. 数据修改时间(modify time)：只要文件的数据内容被修改，数据修改时间就会被刷新
+  3. 状态修改时间(change time)：只要文件的状态发生变化(权限和属性)，状态修改时间就会被刷新
 
 - touch命令的基本格式是 `touch [选项] 文件名`
 
@@ -470,13 +472,12 @@ r | 读取文件的内容(read)
 w | 将文本写入文件(write)
 s | 字符串替换(匹配正则表达式)
 
-是不是感觉晕了？我来举几个例子吧
-
-1. `sed -n '3,5p' test03` 显示test03文件中第三、五行在显示屏上
+- 是不是感觉晕了？我来举几个例子吧
+  1. `sed -n '3,5p' test03` 显示test03文件中第三、五行在显示屏上
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210715000033694.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 
-2. `sed '2a drink tea' test03` 在test03文件第二行最后加上drink tea
+  2. `sed '2a drink tea' test03` 在test03文件第二行最后加上drink tea
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210715001340234.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 
@@ -507,13 +508,54 @@ s | 字符串替换(匹配正则表达式)
 -i | 询问删除，有提示
 -r | 递归删除，用于删除目录
 
->出现啦，`rm -f` 删库跑路啦/doge
+> 出现啦，`rm -f` 删库跑路啦/doge
 
 
+10. mv命令
+- mv命令的基本格式是 `mv [选项] 源文件 目标文件`，该命令既可以在不同的目录之间移动文件或目录，也可以对文件和目录进行重命名
+
+选项 | 含义
+--- | ---
+-f | 强制覆盖
+-i | 交互移动
+-n | 如果目标文件存在则不会覆盖移动
+-v | 显示文件或目录的移动过程
+-u | 若目标文件已经存在， 则对目标文件进行升级
+
+- 除此以外，如果源文件和目标文件在同一目录中，那就是改名
+
+比如：`mv test03 test 3` 就是直接修改文件名称
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20210715160845789.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
+
+11. sort命令
+
+- sort命令的基本格式是 `sort [选项] 文件名`，该命令可以依据不同的数据类型来进行排序
+
+选项 | 含义
+--- | ---
+-f | 忽略大小写
+-b | 忽略每行前面的空白部分
+-n | 以数值型进行排序
+-r | 反向排序
+-u | 删除重复行
+-t | 指定分隔符
+-k [n,m] | 从第n到第m个字段排序
+
+12. wc命令
+
+- wc命令的基本格式是 `wc [选项] 文件名`
+
+选项 | 含义
+--- | ---
+-l | 只统计行数
+-w | 只统计单词数
+-m | 只统计字符数
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20210715172121824.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 
 
-
-
+#### 4.2.2 目录操作命令
 
 
 
