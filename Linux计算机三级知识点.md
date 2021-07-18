@@ -617,6 +617,18 @@ touch命令的重要功能是**修改文件的时间参数**
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210718153749904.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 
+> 细心的大家一定发现了，输入命令 `ls -l` 后的第一列会有一些字符，这些字符其实指的是文件类型和不同的用户对文件所拥有的权限，具体的字符含义如下
+
+第一列字符 | 含义
+--- | ---
+`-` | 普通文件
+`d` | 目录
+`l` | 链接文件
+`b` | 块设备文件
+`c` | 字符设备文件
+
+其他列字符 | 含义
+--- | ---
 
 
 
