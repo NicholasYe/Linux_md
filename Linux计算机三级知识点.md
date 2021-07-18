@@ -556,10 +556,25 @@ s | 字符串替换(匹配正则表达式)
 
 
 #### 4.2.2 目录操作命令
+1. mkdir命令
+
+- mkdir命令的基本格式是 `mkdir [选项] 目录名`，该命令可用于创建新目录
+
+选项 | 含义
+--- | ---
+-m | 用于手动配置所创建目录的权限
+-p | 递归创建所有的目录
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20210718085951636.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 
 
+2. rmdir命令
 
+- rmdir命令的基本格式是 `rmdir [-p] 目录名`，该命令用于删除**空目录**
 
+与上一个命令相同，`-p` 指的是递归删除所有的目录，因此若只需要删除一个目录，可以不添加 `-p`
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20210718090417549.png)
 
 
 
