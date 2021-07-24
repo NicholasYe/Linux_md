@@ -10,6 +10,8 @@
 3. 日期的格式为YYYY-MM-DD
 4. `touch`创建文件，`mkdir`创建文件夹
 
+---
+
 ## 1 linux系统使用基础
 
 ### 1.1 常用linux命令
@@ -54,6 +56,8 @@
 2. 升级 `rpm -Uvh xxx`
 3. 卸载 `rpm -e xxx`
 4. 查询 `rpm -q xxx`和`rpm -qa` 查询所有
+
+---
 
 ## 2 shell脚本编程基础
 ### 2.1 shell编程概述
@@ -175,6 +179,7 @@ $ | 代表引用变量的值
 ### 2.3 shell编程
 >这章作者先暂时跳过，shell编程是独立且庞大的一章，作者会专门写一篇文章学习shell编程。
 
+---
 
 ## 3 用户管理
 
@@ -350,7 +355,9 @@ CREATE_MAIL_SPOOL=yes | 指的是给新建用户建立邮箱
 `-R` | 让组的密码失效
 `-a user` | 将user用户加入组
 `-d user` | 将user用户从组中移除
-  
+
+---
+
 ## 4 文件管理
 
 ### 4.1 文件系统
@@ -473,11 +480,12 @@ touch命令的重要功能是**修改文件的时间参数**
 `s` | 字符串替换(匹配正则表达式)
 
 - 是不是感觉晕了？我来举几个例子吧
-  1. `sed -n '3,5p' test03` 显示test03文件中第三、五行在显示屏上
+
+1. `sed -n '3,5p' test03` 显示test03文件中第三、五行在显示屏上
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210715000033694.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 
-  2. `sed '2a drink tea' test03` 在test03文件第二行最后加上drink tea
+2. `sed '2a drink tea' test03` 在test03文件第二行最后加上drink tea
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210715001340234.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 
