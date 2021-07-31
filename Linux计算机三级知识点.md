@@ -657,10 +657,45 @@ block默认4KB，用于实际的数据存储。一个文件的内容可以存在
    类似于windows的快捷方式，即产生一个特殊的文件，该文件用于指向另一个文件
 
 2. 硬链接
-   给文件的incode分配多个文件名，通过任何一个文件名，都可以找到此文件的incode
+   给文件的inode分配多个文件名，通过任何一个文件名，都可以找到此文件的inode
 
 - ln命令的基本格式是 `ln [选项] 源文件 目标文件`
 - 选项 `-s` 创建软链接文件，不加则创建硬链接文件
+
+**硬链接特点：**
+  1. **不管修改源文件还是硬链接文件，另一个文件的数据都会改变**
+  2. 不管删除源文件还是删除硬链接文件，只要还有一个文件存在，这个文件（指inode号指代的文件）都可以被访问
+  3. 硬链接不会建立新的inode信息，也不会更改inode的总数
+  4. 硬链接不能跨文件（分区）建立
+  5. 硬链接不能连接目录
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/9254f455ea274acc89019bbc10ab6ebd.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
+
+**软链接特点：（与windows的快捷方式一模一样）**
+  1. 修改源文件，软链接文件的数据会随之发生改变
+  2. **删除软链接文件，源文件不受影响；删除源文件，软链接文件将找不到实际的数据，从而显示文件不存在**
+  3. 软链接会新建自己的inode信息和block，只是在block中不存储实际的文件数据，而存贮的是源文件的文件名和inode号
+  4. 软链接可以链接目录
+  5. 软链接可以跨分区
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/9eb461641c9340d8acf26c99d74be493.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
+
+### 4.3 访问权限管理
+
+所谓权限管理，其实就指对不同的用户，设置不同的文件访问权限，包括对文件的读、写、删除等。
+
+#### 4.3.1 权限位
+
+Linux系统最常见的文件权限有3种，即对文件的读（r）、写（w）和执行（x）权限。在linux系统中，每个文件都明确规定了不同身份用户的访问权限，通过ls命令可以看到。
+
+
+
+
+
+
+
+
+
 
 
 
