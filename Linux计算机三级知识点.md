@@ -19,7 +19,7 @@
 #### 1.1.1 linux命令的基本格式
 1. /root是超级用户的目录，/home是普通用户的目录
 2. cd 用于切换目录 `cd /nicholas/local`
-3. ls 用于显示目录下的所有文件，`ls -l`可以显示详细信息，`ls--all`可以显示包括隐藏文件的所有文件
+3. ls 用于显示目录下的所有文件，`ls -l`可以显示详细信息，`ls -a`可以显示包括隐藏文件的所有文件
 
 #### 1.1.2 linux的简单命令
 1. w命令：可以显示所有用户的信息 `w [选项] [用户名]`
@@ -686,7 +686,32 @@ block默认4KB，用于实际的数据存储。一个文件的内容可以存在
 
 #### 4.3.1 权限位
 
-Linux系统最常见的文件权限有3种，即对文件的读（r）、写（w）和执行（x）权限。在linux系统中，每个文件都明确规定了不同身份用户的访问权限，通过ls命令可以看到。
+Linux系统最常见的文件权限有3种，即对文件的**读（r）、写（w）和执行（x）权限**。在linux系统中，每个文件都明确规定了不同身份用户的访问权限，通过ls命令可以看到。
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/dcffb51395c2455bb1358f2dd03d27ba.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
+
+- 注意：
+  - 第一位表示的是文件的具体类型
+  - 后九位分为三组
+     1. 文件所有者的权限
+     2. 文件所有组的权限
+     3. 其他人的权限
+
+> 那么，`r w x` 三个权限的具体含义是什么呢？
+> 注意：同一权限对文件和目录的作用是不同的
+
+权限 | 对文件的作用 | 对目录的作用
+--- | --- | ---
+读权限(r) | 可以读取此文件中的实际内容 | 可以读取目录结构列表
+写权限(w) | 可以编辑、新增或者修改文件中的内容 | 可以在目录中建立、删除或者更名文件与目录
+执行权限(x) | 表示该文件具有被系统执行的权限 | 表示用户可以进入目录
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/98e1880a9c8b499c8020374a6260aea5.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
+
+
+
+
+
 
 
 
