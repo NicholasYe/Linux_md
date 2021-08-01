@@ -702,16 +702,21 @@ Linux系统最常见的文件权限有3种，即对文件的**读（r）、写�
 
 权限 | 对文件的作用 | 对目录的作用
 --- | --- | ---
-读权限(r) | 可以读取此文件中的实际内容 | 可以读取目录结构列表
-写权限(w) | 可以编辑、新增或者修改文件中的内容 | 可以在目录中建立、删除或者更名文件与目录
-执行权限(x) | 表示该文件具有被系统执行的权限 | 表示用户可以进入目录
+读权限 r | 可以读取此文件中的实际内容 | 可以读取目录结构列表
+写权限 w | 可以编辑、新增或者修改文件中的内容 | 可以在目录中建立、删除或者更名文件与目录
+执行权限 x | 表示该文件具有被系统执行的权限 | 表示用户可以进入目录
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/98e1880a9c8b499c8020374a6260aea5.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 
+#### 4.3.2 修改权限位的命令
 
+1. chmod命令
 
+文件的基本权限由9个字符组成，如 `rwxrw-r-x` 就是由九位字母组成。可以使用数字来代表各个权限。其中：**r代表4，w代表2，x代表1**。那么，上式中的 `rwxrw-r-x` 就可以完美的转换为 `765`。由此，通过一串数字，我们就可以更改文件的权限。
 
+- chmod命令的基本格式是 `chmod [权限值] 文件名 `，**如果加选项 `-R` 表示连同子目录中的所有文件，也都修改为设定的权限。**
 
+![在这里插入图片描述](https://img-blog.csdnimg.cn/8a008d89f53e4c0cbb8ef4f1b850149b.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 
 
 
