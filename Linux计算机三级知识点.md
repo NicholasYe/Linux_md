@@ -712,17 +712,32 @@ Linux系统最常见的文件权限有3种，即对文件的**读（r）、写�
 
 1. chmod命令
 
-文件的基本权限由9个字符组成，如 `rwxrw-r-x` 就是由九位字母组成。可以使用数字来代表各个权限。其中：**r代表4，w代表2，x代表1**。那么，上式中的 `rwxrw-r-x` 就可以完美的转换为 `765`。由此，通过一串数字，我们就可以更改文件的权限。
+文件的基本权限由9个字符组成，如 `rwxrw-r-x` 就是由九位字母组成。可以使用数字来代表各个权限。其中：**r代表4，w代表2，x代表1**。那么，上式中的 `rwxrw-r-x` 就可以完美的转换为 `765`。由此，通过一串数字，我们就可以更改文件的权限，如 `chmod 777 study.exe`
 
-- chmod命令的基本格式是 `chmod [权限值] 文件名 `，**如果加选项 `-R` 表示连同子目录中的所有文件，也都修改为设定的权限。**
+- chmod命令的基本格式是 `chmod 权限值 文件名 `，**如果加选项 `-R` 表示连同子目录中的所有文件，也都修改为设定的权限。**
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/8a008d89f53e4c0cbb8ef4f1b850149b.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
-
-
+![在这里插入图片描述](https://img-blog.csdnimg.cn/54f064945d7f4598a466e0b2e5b29869.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 
 
+2. umask命令
 
+Linux系统通过使用**umask默认权限**来给新建的文件和目录赋予初始权限的。
+那么怎么查看umask默认权限的值呢？
 
+![在这里插入图片描述](https://img-blog.csdnimg.cn/5c8ce84fff8149a19b7c7826016f54e9.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
+
+- 唉？为什么是四个数字呢？这是因为第一个数字是指文件所具有的特殊权限，而后三位数字才是umask权限值，这里的0002代表的便是 `-------w-`
+
+那么，就有：`文件（或目录）的初始权限=文件（或目录）的最大默认权限-umask权限`，而文件与目录的最大初始权限又是不同的。
+
+种类 | 字母符号 | 数字
+--- | --- | ---
+文件 | `rw-rw-rw-` | `666`
+目录 | `rwxrwxrwx` | `777`
+
+- 想要修改也非常简单，使用 `umask xxx` 就可以修改，但这样的修改是临时性的，一旦重启或者重新登录就会失效。
+
+3. chown命令
 
 
 
