@@ -68,12 +68,14 @@
 #### 2.1.2 shell脚本的运行
 shell脚本主要有三种方式：
 1. 利用chmod命令修改脚本文件的权限为可执行 
-   1. `chmod u+x sh01`
-   2. `./sh01`
+   - `chmod u+x sh01`
+   - `./sh01`
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2021070713494029.png)
+
 2. 以脚本名作为参数传递给shell程序
-   1. `bash sh01`
+   - `bash sh01`
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210707135215838.png)
+
 3. 运行bash程序，以输出重定向的方式让bash从给定文件中读入命令行
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2021070713542151.png)
 - 注意：**这种方式脚本后面不可以带参数**
@@ -737,7 +739,92 @@ Linux系统通过使用**umask默认权限**来给新建的文件和目录赋予
 
 - 想要修改也非常简单，使用 `umask xxx` 就可以修改，但这样的修改是临时性的，一旦重启或者重新登录就会失效。
 
-3. chown命令
+3. chown命令(change owner)
+
+- chown命令的基本格式是 `chown 所有者：所属组 文件或目录`，主要用于修改文件（或目录）的所有者，也可以用来修改文件（或目录）的所属组。
+- 添加 `-R` 选项表示连同子目录的所有文件，都更改所有者
+
+4. chgrp命令(change group)
+
+- chgrp命令的基本格式是 `chgrp 所属组 文件名（目录名）`，用于修改文件（或目录）的所属组。
+- 添加 `-R` 选项表示连同子目录的所有文件，都更改所属组。
+
+
+> 这章终于结束了5555555555
+
+---
+
+## 5 进程管理
+
+### 5.1 进程监视
+
+1. ps命令
+
+- ps命令的基本格式是 `ps [选项]`，此命令可以查看系统中所有运行进程的详细信息。
+
+推荐的选项 | 作用
+--- | ---
+-aux | 查看系统中所有的进程
+-le | 查看系统中所有的进程及其父进程的PID与进程优先级
+-l | 只能查看当前shell产生的进程
+
+- 输入 `ps -aux`
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/25345e0a2d734a46a6e4622f213a47da.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
+
+各个字段的含义如下：
+字段 | 含义
+--- | ---
+USER | 进程是由哪个用户产生的
+PID | 进程的ID
+%CPU | 进程的CPU使用率
+%MEM | 进程的物理内存使用率
+VSZ | 进程占用虚拟内存的大小
+RSS | 进程占用实际物理内存的大小
+TTY | 进程是在哪个终端运行的
+STAT | 进程的状态：  `S`睡眠，`R`正在运行，`T`停止，`<`高优先级，`N`低优先级，`L`锁入内存，`l`具有多线程，`+`位于后台
+START | 进程启用的时间
+TIME | 进程占用CPU的运算时间
+COMMAND | 产生进程的命令名
+
+- 输入 `ps -le`
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/3a462d97bf6740f3a70402f46728d02d.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
+
+字段 | 含义
+--- | ---
+F | 进程标志，说明进程的权限（1是可复制不可执行，4是使用超级用户权限）
+S | 进程的状态
+UID | 运行进程的用户的ID
+PID | 进程的ID
+PPID | 父进程的ID
+C | 进程的CPU占用率
+PRI | 进程的优先级，数值越小，进程的优先级越高，越早被CPU执行
+NI | 进程的优先级，数值越小，进程越早被执行
+ADDR | 进程所在的位置
+SZ | 进程占用的内存大小
+WCHAN | 进程是否运行，`-`代表正在运行
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
