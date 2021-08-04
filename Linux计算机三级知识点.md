@@ -764,9 +764,9 @@ Linux系统通过使用**umask默认权限**来给新建的文件和目录赋予
 
 推荐的选项 | 作用
 --- | ---
--aux | 查看系统中所有的进程
--le | 查看系统中所有的进程及其父进程的PID与进程优先级
--l | 只能查看当前shell产生的进程
+`-aux` | 查看系统中所有的进程
+`-le` | 查看系统中所有的进程及其父进程的PID与进程优先级
+`-l` | 只能查看当前shell产生的进程
 
 - 输入 `ps -aux`
 
@@ -775,17 +775,17 @@ Linux系统通过使用**umask默认权限**来给新建的文件和目录赋予
 各个字段的含义如下：
 字段 | 含义
 --- | ---
-USER | 进程是由哪个用户产生的
-PID | 进程的ID
-%CPU | 进程的CPU使用率
-%MEM | 进程的物理内存使用率
-VSZ | 进程占用虚拟内存的大小
-RSS | 进程占用实际物理内存的大小
-TTY | 进程是在哪个终端运行的
-STAT | 进程的状态：   `S`睡眠，`R`正在运行，`T`停止，`<`高优先级，`N`低优先级，`L`锁入内存，`l`具有多线程，`+`位于后台
-START | 进程启用的时间
-TIME | 进程占用CPU的运算时间
-COMMAND | 产生进程的命令名
+`USER` | 进程是由哪个用户产生的
+`PID` | 进程的ID
+`%CPU` | 进程的CPU使用率
+`%MEM` | 进程的物理内存使用率
+`VSZ` | 进程占用虚拟内存的大小
+`RSS` | 进程占用实际物理内存的大小
+`TTY` | 进程是在哪个终端运行的
+`STAT` | 进程的状态：   `S`睡眠，`R`正在运行，`T`停止，`<`高优先级，`N`低优先级，`L`锁入内存，`l`具有多线程，`+`位于后台
+`START` | 进程启用的时间
+`TIME` | 进程占用CPU的运算时间
+`COMMAND` | 产生进程的命令名
 
 - 输入 `ps -le`
 
@@ -793,36 +793,70 @@ COMMAND | 产生进程的命令名
 
 字段 | 含义
 --- | ---
-F | 进程标志，说明进程的权限（1是可复制不可执行，4是使用超级用户权限）
-S | 进程的状态
-UID | 运行进程的用户的ID
-PID | 进程的ID
-PPID | 父进程的ID
-C | 进程的CPU占用率
-PRI | 进程的优先级，数值越小，进程的优先级越高，越早被CPU执行
-NI | 进程的优先级，数值越小，进程越早被执行
-ADDR | 进程所在的位置
-SZ | 进程占用的内存大小
-WCHAN | 进程是否运行，`-`代表正在运行
+`F` | 进程标志，说明进程的权限（1是可复制不可执行，4是使用超级用户权限）
+`S` | 进程的状态
+`UID` | 运行进程的用户的ID
+`PID` | 进程的ID
+`PPID` | 父进程的ID
+`C` | 进程的CPU占用率
+`PRI` | 进程的优先级，数值越小，进程的优先级越高，越早被CPU执行
+`NI` | 进程的优先级，数值越小，进程越早被执行
+`ADDR` | 进程所在的位置
+`SZ` | 进程占用的内存大小
+`WCHAN` | 进程是否运行，`-`代表正在运行
 
+- 如果你不想看到所有的进程，只想看到当前登录中断产生了哪些进程，只需要使用 `ps -l` 就足够了。
 
+2. pstree命令
 
+- pstree命令的基本格式是 `pstree [选项] [PID或用户名]`，用于以树形结构显示程序和进程之间的关系。
 
+选项 | 含义
+--- | ---
+`-a` | 显示启动每个进程对应的完整指令
+`-c` | 显示的进程中包含子进程和父进程
+`-n` | 根据进程PID号来排序输出
+`-p` | 显示进程的PID号
+`-u` | 显示进程对应的用户名称
 
+用pstree显示用户的所有进程并显示UID号：
 
+![在这里插入图片描述](https://img-blog.csdnimg.cn/233398b538e44b7eaeb9d1b91a28f858.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 
+3. top命令
 
+- top命令的基本格式是 `top [选项]`，主要用来动态地持续监听进程的运行状态。该命令还提供一个交互界面，用户可以根据需要，人性化地定制自己的输出。
 
+选项 | 含义
+--- | ---
+`-d 秒` | 制定top命令每隔几秒更新
+`-b` | 使用批处理模式输出
+`-n 次数` | 指定top命令执行的次数
+`-p 进程PID` | 仅查看指定ID的进程
+`-s` | 使top命令在安全模式中运行
+`-u 用户名` | 只监听某个用户的进程
 
+![在这里插入图片描述](https://img-blog.csdnimg.cn/0b23ca3b54c84a32a6bad9e4e5eacc3a.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 
+> 是不是很像windows管理器的呢 /doge
 
+在这个界面下，还可以使用如下按键进行交互操作：
 
+按键 | 作用
+--- | ---
+`P` | 按照CPU的占用率排序
+`M` | 按照内存的占用率排序
+`N` | 安装PID排序
+`T` | 按照CPU的累计运算时间排序
+`q` | 退出top命令
 
+- 如果想要看到所有的进程，则可以把执行结果重定向到文件中。不过top命令也是持续运行的，这是就需要使用`-b`和`-n`选项了，具体如下：`top -b -n 1 > top.log`，就可以把结果保存到`top.log`这个文件中，就可以看到所有的进程了。
 
+![在这里插入图片描述](https://img-blog.csdnimg.cn/df35aca553ab493a842124dc01be2728.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 
+4. lsof命令(list opened files)
 
-
-
+- lsof命令的基本格式是 `lsof [选项]`，就是列举系统中已经被打开的文件，通过该命令可以根据文件找到对应的进程信息，也可因此找到进程打开的文件。
 
 
 
