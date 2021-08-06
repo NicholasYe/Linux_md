@@ -907,10 +907,23 @@ Linux系统通过使用**umask默认权限**来给新建的文件和目录赋予
 
 ## 5.3 进程优先级
 
+Linux系统中通常运行着非常多的进程，但是CPU在一个时钟周期内只能运算几条指令，那么，谁应该先运算谁应该后运算呢？**这就需要由进程的优先级来决定了**
 
+- 在Linux系统中，有两个参数表示进程的优先级：`PRI`(Priority) 和 `NI`(Nice)。
+- 输入指令 `ps -le` 可以查看进程的优先级
 
+![在这里插入图片描述](https://img-blog.csdnimg.cn/c674570cdd114d98b82e94dd25779f55.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 
+- 这两个值都代表着优先级，数值越小代表该进程越优先被CPU处理。**不过，PRI值是由内核动态调整，用户不能直接修改，只能修改NI的值。**
+- PRI与NI两者之间的关系：`PRI（最终值）=PRI（原始值）+NI`
 
+**修改NI值时有几个注意事项：**
+  1. NI的范围是-20~19
+  2. 普通用户调整NI值是0~19，而且只能调整自己的进程
+  3. 普通用只能调高NI值，不能调低
+  4. root用户可以在限制范围内随意更改
+
+- 修改NI的值命令的基本格式是 `nice [-n NI值] 命令`，**该命令可以给要启动的进程赋予NI值，但是不能修改已运行进程的NI值。**
 
 
 
