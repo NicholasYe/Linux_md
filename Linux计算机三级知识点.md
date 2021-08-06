@@ -905,7 +905,7 @@ Linux系统通过使用**umask默认权限**来给新建的文件和目录赋予
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/70d0089d49be48da9c905ad7885a3568.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 
 
-## 5.3 进程优先级
+### 5.3 进程优先级
 
 Linux系统中通常运行着非常多的进程，但是CPU在一个时钟周期内只能运算几条指令，那么，谁应该先运算谁应该后运算呢？**这就需要由进程的优先级来决定了**
 
