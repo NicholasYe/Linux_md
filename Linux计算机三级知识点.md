@@ -865,6 +865,61 @@ Linux系统通过使用**umask默认权限**来给新建的文件和目录赋予
 `-u 用户名` | 只列出某个用户的进程打开的文件
 `-p PID` | 列出某个用户的进程打开的文件
 
+### 5.2 结束进程
+
+进程的管理主要是指进程的关闭与重启。进程的关闭要依赖进程的信号(Signal)。可以用命令 `kill -l` 来查询。
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/27efa32d01a84532b381238bb7eceb4b.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
+
+信号代码 | 信号名称 | 说明
+--- | --- | ---
+1 | SIGHUP | 使进程立即关闭，重新读取配置文件之后重启
+2 | SIGINT | 程序终止信号，用于终止前台进程
+8 | SIGFPE | 在发生致命的算数错误时发出
+9 | SIGKILL | 立即结束程序的运行（一般用于强制终止进程）
+14 | SIGALRM | 时钟定时信号，计算的是实际的时钟或时钟时间
+15 | SIGTERM | 正常结束进程的信号，kill命令的默认信号
+18 | SIGCONT | 该信号可以让暂停的进程恢复执行，该信号不能被阻断
+19 | SIGSTOP | 该信号可以暂停前台进程，该信号不能被阻断
+
+1. kill命令
+
+- 该命令的基本格式是 `kill [-信号] PID`，用来向进程发送一个用户指定的信号。
+- 注意：kill命令只是“发送”一个信号，因此**只有信号被程序成功“捕获”，系统才会执行kill命令；反之，如果信号被“封锁”或“忽略”，则kill命令会失效**
+
+2. killall命令
+
+- 该命令的基本格式是 `killall [选项] [-信号] 进程名`，与`kill`命令不同的是，`killall`命令不再依靠PID来杀死单个进程，而是通过程序的进程名来杀死一类进程。
+
+选项 | 含义
+--- | ---
+-i | 交互式询问是否杀死进程
+-I | 忽略进程名的大小写
+
+3. pkill命令
+
+- 该命令的基本格式是 `pkill [-信号] 进程名`，但与`killall`命令不同的是，**`pkill`可以按章终端号来踢出登录用户**，命令的基本格式是 `pkill [-信号] [-t 终端号] 进程名`。
+
+通过命令 `w` 查看本机已登录的用户，并用命令 `pkill -9 -t pts/0` 结束另外一个用户的进程：
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/70d0089d49be48da9c905ad7885a3568.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
+
+
+## 5.3 进程优先级
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
