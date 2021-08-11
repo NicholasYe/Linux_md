@@ -1056,7 +1056,42 @@ Linux系统中通常运行着非常多的进程，但是CPU在一个时钟周期
   1. 只支持一块硬盘损坏后的数据修复
   2. 损失一块硬盘的存储空间 
 
-> 我个人认为最好的存储方式
+> 我个人认为性价比最高的存储方式
+
+---
+
+## 7 网络管理
+
+1. 网络接口卡(Network Interface Card,NIC)
+
+通常，联网操作是通过机器上的PCI设备，即网络接口卡来实现的。通过命令`lspci`可以验证给出的PCI设备是否能被内核检测到。
+
+> VM上的显示的接口很杂乱，为此，博主用树莓派上的Linux系统来展示
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/8e2f6082a09e4a5e8cc2d327b3313937.png)
+
+2. 网络接口
+
+**常用的Linux接口名称和类型：**
+
+名称 | 类型
+--- | ---
+eth0 | 以太网
+lo | （虚拟）回环设备
+ppp0 | 使用PPP协议的串口设备
+tr0 | 令牌环
+fddi0 | 光纤
+
+3. 检测接口
+
+输入命令 `ifcondig -a` 可以检测所有目前已被识别的网络接口信息
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/838bf80431c040ee9970356fccf8edce.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
+
+*啊 这章好难 书上写的好乱 我跳过了*
+
+## 8. OpenSSH
+
 
 
 
