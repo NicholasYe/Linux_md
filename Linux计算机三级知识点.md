@@ -1,18 +1,12 @@
-
 ```
 本文为作者计算机三级linux学习笔记
 会在暑假陆陆续续更新完毕，欢迎关注！
 欢迎交流讨论，喜欢的话点个赞吧
 ```
-## 0 linux一些基础知识与命令
-1. `su root` 进入超级用户模式
-2. `yum search vim` 搜索软件, `yum install vim` 安装软件
-3. 日期的格式为YYYY-MM-DD
-4. `touch`创建文件，`mkdir`创建文件夹
 
 ---
 
-## 1 linux系统使用基础
+## 1.linux系统使用基础
 
 ### 1.1 常用linux命令
 
@@ -59,7 +53,7 @@
 
 ---
 
-## 2 shell脚本编程基础
+## 2.shell脚本编程基础
 ### 2.1 shell编程概述
 #### 2.1.1 shell的种类
 1. 输入`cat /etc/shells` 可以查看所有的shell种类
@@ -183,7 +177,7 @@ $ | 代表引用变量的值
 
 ---
 
-## 3 用户管理
+## 3.用户管理
 
 ### 3.1 用户与用户组管理
 Linux系统支持多个用户在同一时间内登陆，不同用户可以执行不同的任务，并且互不影响
@@ -360,7 +354,7 @@ CREATE_MAIL_SPOOL=yes | 指的是给新建用户建立邮箱
 
 ---
 
-## 4 文件管理
+## 4.文件管理
 
 ### 4.1 文件系统
 为了方便管理文件和目录，Linux系统将他们组织成一个分层的结构，有条不紊地管理着数据。
@@ -754,7 +748,7 @@ Linux系统通过使用**umask默认权限**来给新建的文件和目录赋予
 
 ---
 
-## 5 进程管理
+## 5.进程管理
 
 ### 5.1 进程监视
 
@@ -927,7 +921,7 @@ Linux系统中通常运行着非常多的进程，但是CPU在一个时钟周期
 
 ---
 
-## 6 存储管理
+## 6.存储管理
 
 ### 6.1 存储设备的查看
 
@@ -1060,7 +1054,7 @@ Linux系统中通常运行着非常多的进程，但是CPU在一个时钟周期
 
 ---
 
-## 7 网络管理
+## 7.网络管理
 
 1. 网络接口卡(Network Interface Card,NIC)
 
@@ -1090,7 +1084,7 @@ fddi0 | 光纤
 
 ~~*啊 这章好难 书上写的好乱 我跳过了*~~
 
-## 8. OpenSSH
+## 8.OpenSSH
 
 ### 8.1 安装OpenSSH
 
@@ -1113,27 +1107,58 @@ OpenSSH的主配置文件为 `/etc/ssh/sshd_config`，可以通过Vim编辑器�
 设置IPV6地址 | `ListenAddress`
 拒绝访问的用户（用空格隔开） | `DenyUsers Kobe James`
 允许访问的用户（用空格隔开） | `AllowUsers root Nicholas`
+禁止root用户登录 | `PermitRootLogin no`
+用户登录需要密码认证 | `PermitEmptyPasswords no`
+启用口令认证方式 | `PasswordAuthentication yes`
+是否显示登录提示信息 | `PrintMotd yes`
+是否使用DNS解析 | `UseDNS yes`
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/f68331481b1c450c86a82e54eeb6770c.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 
 
 
+- 通过命令 `service sshd status` 可以查看SSH服务是否正在运行，如果没有正常运行，可以通过指令 `service sshd start` 开启或者 `service sshd restart` 重启。
 
+![在这里插入图片描述](https://img-blog.csdnimg.cn/5b0df1dbcfe74659a738d3d66b451379.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 
+### 8.3 OpenSSH的使用
 
+OpenSSH采用密钥的方式对数据进行加密，在正式开始传输数据之前，双方先要交换密钥，当收到对方的数据时，再利用密钥和相应的程序对数据进行解密。
 
+#### 8.3.1 远程登录
 
+使用`ssh`命令登录的时候一般格式是 `ssh [user@] host [选项]`，使用ssh以root身份登录远程主机，执行ssh远程登录命令后，需要输入登录密码。在终端输入`exit`或`logout`退出登录，返回本机，退出成功后，终端会提示与远程主机断开连接。
 
+选项 | 含义
+--- | ---
+`-p port` | 远程服务器监听的端口
+`-b` | 指定连接的源IP地址
+`-v` | 调试模式
+`-C` | 压缩方式
+`-X` | 支持x11转发
+`-t` | 强制伪tty分配
 
+#### 8.3.2 文件传输
 
+- scp是OpenSSH中的一个重要客户端软件。该命令的一般格式是：**`scp [user@host1:]file1 [user@host2]file2`**，第一个参数是源文件，第二个参数是目标文件。
 
-
-
-
-
-
-
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a67551871ca143e199724754a664369f.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
-
-
+1. 从服务器上下载文件的命令一般格式是：`scp username@servername:/path/test.txt`
+2. 从服务器上下载目录的命令一般格式是：`scp -r username@sername:/etc/github/(远程目录) /etc/download/(本地目录)`
+3. 上传本地文件到服务器的命令一般格式是：`scp /path/test.txt username@servername:/path`
+4. 上传本地目录到服务器的命令一般格式是：`scp -r /etc/upload/(本地目录) username@servername:/etc/github/(远程目录)`
 
 ---
+> 好的，就到这里结束啦，开心~
+> 一路上还是挺累的，又是上课又是做项目的，断断续续学完的
+> 但是还有vim编辑和bash编程还没学，我会单独写两篇Blog的
+> 希望能早点回学校吧，图书馆借的书没有带回来，bash是学不了555
+> 继续加油吧╰(￣▽￣)╭
+
+- 挖坑：
+- [ ] Vim编辑器学习笔记
+- [ ] Bash编程学习笔记
+- [ ] Arduino扩展板——从AD设计再到投板焊接
+
+---
+
 `请在转载文章过程中明确标注文章出处！尊重原创，尊重知识产权，谢谢！`
