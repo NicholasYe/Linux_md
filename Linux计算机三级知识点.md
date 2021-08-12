@@ -1088,16 +1088,50 @@ fddi0 | 光纤
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/838bf80431c040ee9970356fccf8edce.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 
-*啊 这章好难 书上写的好乱 我跳过了*
+~~*啊 这章好难 书上写的好乱 我跳过了*~~
 
 ## 8. OpenSSH
 
+### 8.1 安装OpenSSH
+
+1. OpenSSH是Linux系统中最为常用的SSH服务器，在CentOS系统中通过命令 `sudo yum install openssh*` 安装OpenSSH。
+2. 通过命令开启防火墙的22号端口
+```
+# sudo firewall -cmd --zone=public -add-port=22 /tcp --permanent
+# sudo service firewall restart 
+```
+
+### 8.2 配置OpenSSH
+
+OpenSSH的主配置文件为 `/etc/ssh/sshd_config`，可以通过Vim编辑器进行编辑，下面列出一些常见的配置选项：
+
+配置选项 | 配置方法
+--- | ---
+设置SSH的端口号为22 | `Port=22`
+启用SHH版本2协议 | `Protocol 2`
+设置服务器监听的地址 | `ListenAddress 192.168.0.222`
+设置IPV6地址 | `ListenAddress`
+拒绝访问的用户（用空格隔开） | `DenyUsers Kobe James`
+允许访问的用户（用空格隔开） | `AllowUsers root Nicholas`
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/a67551871ca143e199724754a664369f.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 
 
 
