@@ -3,14 +3,16 @@
 
 ---
 
-### 1、安装及初步使用vim
+### 1、vim初级使用教程
 首先，通过命令 `sudo apt-get install vim` (ubuntu系统)安装vim，如果你是图形界面，安装完之后，你会在应用栏里找到vim程序，单击打开，你会看到一个弹窗。
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210710203554473.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05pY2hvbGFzWVRa,size_16,color_FFFFFF,t_70)
 
 **此时的vim处于normal模式下**
 - 注意：**此处的normal模式相当于键盘上的ctrl模式**。按住ctrl是一种键盘，放开ctrl就是普通的键盘。
 
 在**normal模式下**，有以下基本的操作：
+
 按键 | 操作
 --- | ---
 `i` | Insert模式，按ESC回到Normal模式
@@ -24,7 +26,7 @@
 - 注意：以`:`开始的命令需要输入`<enter>`回车结束
 
 ### 2、vim中级使用教程
-- 注意：**所以的命令都必须是在normal模式下才能使用**
+- 注意：**所以的命令都必须是在normal模式下才能使用**，如果你现在不清楚是在什么模式下，可以多按几次键盘左上角 `Esc`
 
 #### 1、各种插入模式
 
@@ -44,6 +46,35 @@
 `$` | 到本行行尾
 `g_` | 到本行最后一个不是空格的位置。
 `/pattern` | 搜索`pattern`的字符串（按n切换下一个）
+
+#### 3、拷贝与粘贴
+
+按键 | 操作
+--- | ---
+`P` | 粘贴
+`yy` | 拷贝当前行
+
+#### 4、撤销与重做
+
+按键 | 操作
+--- | ---
+`u` | 撤销
+`ctrl+r` | 重做
+
+#### 5、打开/保存/退出/改变文件
+
+按键 | 操作
+--- | ---
+`:e <path/to/file>` | 打开一个文件
+`:saveas <path/to/file>` | 另存为 <path/to/file>
+`:w` | 存盘
+`:wq` | 保存并退出
+`:q!` | 退出不保存 
+`:qa!` | 强行退出所有的正在编辑的文件，就算别的文件有更改
+`:bn`和`:bp` | 打开多个文件时使用这两个命令来切换下一个或上一个文件
+
+
+
 
 
 
