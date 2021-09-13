@@ -30,7 +30,7 @@
    1. echo "Hello World" 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210706141420378.png)
 
-   2. echo "Hello World" 
+   2. echo -n "Hello World" 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210706141439689.png)
 
    3. **不知道为啥，在我眼中，科技最大的浪漫就是电脑回复你Hello World的那一刻**
